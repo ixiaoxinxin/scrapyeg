@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
 '''by sudo rm -rf  http://imchenkun.com'''
 import scrapy
-from faker import Factory
-from douban.items import DoubanMailItem
+from faker import Factory #对抗网站防爬的招数
+from douban.douban.items import DoubanMailItem
 import urlparse
 f = Factory.create()
 
