@@ -30,3 +30,5 @@ class BookSpider(scrapy.Spider):
             book['price'] = item.xpath('td[2]/p/text()').extract()[0]
             book['ratings'] = item.xpath('td[2]/div[2]/span[2]/text()').extract()[0]
             yield book
+
+    #price *[ @ id = "content"] / div / div[1] / div / table[1] / tbody / tr / td[2] / p[1]
