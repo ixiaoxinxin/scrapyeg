@@ -44,11 +44,13 @@ class MailSpider(scrapy.Spider):
         if 'captcha_image' in response.body:
             print 'Copy the link:'
             link = response.xpath('//img[@class="captcha_image"]/@src').extract()[0]
+            #// *[ @ id = "captcha_image"]
             print link
             captcha_solution = raw_input('captcha-solution:')
             captcha_id = urlparse.parse_qs(urlparse.urlparse(link).query, True)['id']
             self.formdata['captcha-solution'] = captcha_solution
             self.formdata['captcha-id'] = captcha_id
+          #request meta key 支持单spider追踪多cookie session
         return [scrapy.FormRequest.from_response(response,
                                                  formdata=self.formdata,
                                                  headers=self.headers,
